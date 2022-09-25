@@ -2,6 +2,7 @@
 
   * Get [reddit avatar floorprice scraper](https://github.com/hmspinafore/reddit-avatar-scraper) from github
   * Get API key from [Covalent HQ](https://www.covalenthq.com/) - free tier works fine
+    * You need to enter the API key in `config.py`
 
 # Running
 
