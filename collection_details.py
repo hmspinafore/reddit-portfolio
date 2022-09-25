@@ -1,0 +1,71 @@
+# Store useful data about Reddit Collectible Avatars collections in order
+# to reason about them when getting blockchain data.
+
+# Enter your address below, but use generated CONTRACT_ADDRESS_TO_COLLECTION_SLUG.
+USER_ENTERED_CONTRACT_ADDRESS_TO_COLLECTION_SLUG = {
+    "0x5846728730366d686cdc95dae80a70b44ec9eab2": "imagination-station-x-reddit-collectible-avatars",
+    "0xfbed9640e37666fe2ac78e1d263670976354cb69": "the-butterfly-garden-x-reddit-collectible-avatars",
+    "0xe0743141df04a6b9f3df890429cc994e46db03d9": "drag-queens-of-big-gay-baby-x-reddit-collectible",
+    "0x97439ee4c93ff9f76417696ce648aa6f35ab3b25": "creatures-of-the-nighties-x-reddit-collectible",
+    "0xf43bc3f4F1edb7d4C373C8510A2888d69d83cEB7": "joy-girls-club-x-reddit-collectible-avatars",
+    "0x425bf054Ef7bAD65B7BDd8E6587B1c3500E4F4CA": "avatar-rock-out-x-reddit-collectible-avatars",
+    "0x2956409293da98603025Cc0121C06A4244752039": "protectors-of-the-forest-x-reddit-collectible-avat",
+    "0xa7Bb50d90B43752199c45Be04053641C3cb5f53f": "bites-of-brazil-x-reddit-collectible-avatars",
+    "0x47749C5B970e63F3a0ed57Cd6ceF773E74FaFe9d": "cute-cool-and-creepy-x-reddit-collectible-avatars",
+    "0x838c1CD42929543daF9C3ef294Fee8c1b3224B37": "creatures-without-pants-x-reddit-collectible-avata",
+    "0xC5Aa1F91b0d52e26D2847f8e51f505d6e2ECe795": "lightspeed-lads-x-reddit-collectible-avatars",
+    "0xeE1Ee80338958fA596471CEb70F0177DafF80323": "growl-gang-x-reddit-collectible-avatars",
+    "0x4670e4890Bc1b76F3aE5c7660aA98E0B6668C6F3": "old-school-cool-x-reddit-collectible-avatars",
+    "0x2d58a44d6c0a355de25761fb33a1f6269a97e2c5": "aylia-x-reddit-collectible-avatars",
+    "0xD8cF23bF309DE778609d234BD2410B0156118c26": "magic-of-the-woods-x-reddit-collectible-avatars",
+    "0x91E51B92a2EfEA89bF1B6f66ad719737264724bE": "cute-snacks-x-reddit-collectible-avatars",
+    "0xd6261320F49d38c137f6e229a2EA4Ab0F4Fae6DE": "peculiar-gang-x-reddit-collectible-avatars",
+    "0xFC190440E8f357fFE8A75940e7D8A291E165d019": "gettin-groovy-x-reddit-collectible-avatars",
+    "0x808ED3E23aac685126524aA4416d8eaeB2E767B9": "wearing-your-emotions-x-reddit-collectible-avatars",
+    "0x65a83530Ca8abc27969907913Fe5E641a5DA2e9f": "i-quit-my-job-to-be-an-artist-x-reddit-collectibl",
+    "0x6d1c3646e8Cce8537E6ec9eCAb26762bfAf1f891": "baked-goods-evils-x-reddit-collectible-avatars",
+    "0x63e2f0C058Ce9A194eC68F04320b7Eb8cA555BD3": "enlightenment-x-reddit-collectible-avatars",
+    "0x45308788743bBDAe5DE7ba9e565c0502d0EBb81F": "doodle-collection-x-reddit-collectible-avatars",
+    "0x907808732079863886443057C65827a0F1c64357": "foustlings-x-reddit-collectible-avatars",
+    "0x8D0501d85becDA92B89E56177dDfcEA5Fc1f0AF2": "the-senses-x-reddit-collectible-avatars",
+    "0x6ad08588568E258b2BdF065e7769FCE398F68A1C": "the-minds-eyes-x-reddit-collectible-avatars",
+    "0x946aD8E53db653053E8ef7C02DFCA83ce8bA8022": "natsukashii-x-reddit-collectible-avatars",
+    "0x27B37E4Befacc50B02102d1E2117c4EA8A54bEFf": "5-boro-bodega-x-reddit-collectible-avatars",
+    "0x71DC46607F31f30510f0ccc670B0963F431b212A": "celestial-assembly-x-reddit-collectible-avatars",
+}
+
+CONTRACT_ADDRESS_TO_COLLECTION_SLUG = {}
+for contract in USER_ENTERED_CONTRACT_ADDRESS_TO_COLLECTION_SLUG:
+    CONTRACT_ADDRESS_TO_COLLECTION_SLUG[contract.lower()] = USER_ENTERED_CONTRACT_ADDRESS_TO_COLLECTION_SLUG[contract]
+
+COLLECTION_SLUG_TO_NAME = {
+    "imagination-station-x-reddit-collectible-avatars": "Imagination Station x Reddit Collectible Avatars",
+    "the-butterfly-garden-x-reddit-collectible-avatars": "The Butterfly Garden x Reddit Collectible Avatars",
+    "drag-queens-of-big-gay-baby-x-reddit-collectible": "Drag Queens of Big Gay Baby x Reddit Collectible Avatars",
+    "creatures-of-the-nighties-x-reddit-collectible": "Creatures of the Nighties x Reddit Collectible Avatars",
+    "joy-girls-club-x-reddit-collectible-avatars": "Joy Girls Club x Reddit Collectible Avatars",
+    "avatar-rock-out-x-reddit-collectible-avatars": "Avatar Rock Out x Reddit Collectible Avatars",
+    "protectors-of-the-forest-x-reddit-collectible-avat": "Protectors of the Forest x Reddit Collectible Avatars",
+    "bites-of-brazil-x-reddit-collectible-avatars": "Bites of Brazil x Reddit Collectible Avatars",
+    "cute-cool-and-creepy-x-reddit-collectible-avatars": "Cute, Cool and Creepy x Reddit Collectible Avatars",
+    "creatures-without-pants-x-reddit-collectible-avata": "Creatures Without Pants x Reddit Collectible Avatars",
+    "lightspeed-lads-x-reddit-collectible-avatars": "Lightspeed Lads x Reddit Collectible Avatars",
+    "growl-gang-x-reddit-collectible-avatars": "Growl Gang x Reddit Collectible Avatars",
+    "old-school-cool-x-reddit-collectible-avatars": "Old School Cool x Reddit Collectible Avatars",
+    "aylia-x-reddit-collectible-avatars": "Aylia x Reddit Collectible Avatars",
+    "magic-of-the-woods-x-reddit-collectible-avatars": "Magic of the Woods x Reddit Collectible Avatars",
+    "cute-snacks-x-reddit-collectible-avatars": "Cute Snacks x Reddit Collectible Avatars",
+    "peculiar-gang-x-reddit-collectible-avatars": "Peculiar Gang x Reddit Collectible Avatars",
+    "gettin-groovy-x-reddit-collectible-avatars": "Gettin' Groovy x Reddit Collectible Avatars",
+    "wearing-your-emotions-x-reddit-collectible-avatars": "Wearing Your Emotions x Reddit Collectible Avatars",
+    "i-quit-my-job-to-be-an-artist-x-reddit-collectibl": "I quit my job to be an Artist x Reddit Collectible Avatars",
+    "baked-goods-evils-x-reddit-collectible-avatars": "Baked Goods & Evils x Reddit Collectible Avatars",
+    "enlightenment-x-reddit-collectible-avatars": "Enlightenment x Reddit Collectible Avatars",
+    "doodle-collection-x-reddit-collectible-avatars": "Doodle Collection x Reddit Collectible Avatars",
+    "foustlings-x-reddit-collectible-avatars": "Foustlings x Reddit Collectible Avatars",
+    "the-senses-x-reddit-collectible-avatars": "The Senses x Reddit Collectible Avatars",
+    "the-minds-eyes-x-reddit-collectible-avatars": "The Mind's Eye(s) x Reddit Collectible Avatars",
+    "natsukashii-x-reddit-collectible-avatars": "Natsukashii x Reddit Collectible Avatars",
+    "5-boro-bodega-x-reddit-collectible-avatars": "5 Boro Bodega x Reddit Collectible Avatars",
+    "celestial-assembly-x-reddit-collectible-avatars": "Celestial Assembly x Reddit Collectible Avatars",
+}
