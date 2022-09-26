@@ -20,7 +20,7 @@ HEADERS = {
 
 def fetch_token_owners(contract_address: str, token_id: int) -> dict:
     response = requests.get(BITSKI_TOKEN_OWNERS.format(
-        contract_address=contract_address, token_id=token_id, api_key=config.chq_api_key))
+        contract_address=contract_address, token_id=token_id))
 
     if response.status_code != 200:
         logger.debug(
@@ -62,7 +62,7 @@ def fetch_token_balance_for_address(address: str) -> list:
 
     return response.json()["data"]["items"]
 
-def fetch_token_balance_for_multiple_addresses(addresses: list[str]) -> list:
+def fetch_token_balance_for_multiple_addresses(addresses) -> list:
     """Fetches data about token balances from Covalent HQ's GET endpoint for multiple addresses.
     Returns the concatentated list of JSON responses for the multiple addresses.
 
@@ -75,7 +75,7 @@ def fetch_token_balance_for_multiple_addresses(addresses: list[str]) -> list:
         combined.extend(response)
     return combined
 
-def compute_token_balance_from_json_responses(addresses: list[str], responses: list[dict]) -> dict:
+def compute_token_balance_from_json_responses(addresses, responses) -> dict:
     """Processes the list of JSON responses about token balances and outputs a dict with
     key = avatar name (str), value = set of token IDs int).
     """
