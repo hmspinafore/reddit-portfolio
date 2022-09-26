@@ -12,10 +12,24 @@ logger = logging.getLogger("reddit_portfolio_logger")
 # https://www.covalenthq.com/docs/api/#/0/Get%20token%20balances%20for%20address/USD/137
 CHQ_BALANCE_URL = "https://api.covalenthq.com/v1/137/address/{address}/balances_v2/?quote-currency=USD&format=JSON&nft=true&no-nft-fetch=true&key={api_key}"
 CHQ_GET_EXTERNAL_DATA = "https://api.covalenthq.com/v1/137/tokens/{contract_address}/nft_metadata/{token_id}/?quote-currency=USD&format=JSON&key={api_key}"
+BITSKI_TOKEN_OWNERS = "https://api.bitski.com/v1/owners?chainId=137&contractAddress={contract_address}&tokenId={token_id}&fetchNftMetadata=false"
 
 HEADERS = {
     "Content-Type": "application/json",
 }
+
+def fetch_token_owners(contract_address: str, token_id: int) -> dict:
+    response = requests.get(BITSKI_TOKEN_OWNERS.format(
+        contract_address=contract_address, token_id=token_id, api_key=config.chq_api_key))
+
+    if response.status_code != 200:
+        logger.debug(
+                f"[Bitski] Failed to fetch metadata for {contract_address} token {token_id}."
+                f"Received {response.status_code}: {response.reason}. {response.json()}"
+        )
+        response.raise_for_status()
+
+    return response.json()["balances"]
 
 def fetch_external_metadata(contract_address: str, token_id: int) -> dict:
     response = requests.get(CHQ_GET_EXTERNAL_DATA.format(
@@ -82,19 +96,18 @@ def compute_token_balance_from_json_responses(addresses: list[str], responses: l
         for nft_data in response['nft_data']:
             metadata = fetch_external_metadata(response["contract_address"], int(nft_data["token_id"]))
             if metadata[0]['nft_data'][0]['owner_address'] not in portfolio: continue
+
+            token_owners = fetch_token_owners(response["contract_address"], int(nft_data["token_id"]))
+            found_owner = False
+            for token_owner in token_owners:
+                if token_owner["address"] in portfolio:
+                    found_owner = True
+                    break
+            if not found_owner: continue
+
             nft_name = metadata[0]['nft_data'][0]['external_data']['name']
             avatar_name_raw, avatar_id_str = [s.strip() for s in nft_name.split("#")]
             avatar_name, avatar_id = avatar_name_raw.strip(), int(avatar_id_str)
-            if avatar_name == "Cone Head":
-                print("response ==================")
-                print(response)
-                print()
-                print("nft data ==================")
-                print(nft_data)
-                print()
-                print("metdata ==================")
-                print(metadata)
-                print()
         
             if avatar_name not in avatar_to_ids_owned:
                 avatar_to_ids_owned[avatar_name] = set([])
