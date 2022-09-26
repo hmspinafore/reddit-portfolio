@@ -61,11 +61,15 @@ def fetch_token_balance_for_multiple_addresses(addresses: list[str]) -> list:
         combined.extend(response)
     return combined
 
-def compute_token_balance_from_json_responses(responses: list[dict]) -> dict:
+def compute_token_balance_from_json_responses(addresses: list[str], responses: list[dict]) -> dict:
     """Processes the list of JSON responses about token balances and outputs a dict with
     key = avatar name (str), value = set of token IDs int).
     """
     avatar_to_ids_owned = {}
+
+    portfolio = set([])
+    for address in addresses:
+        portfolio.add(address.lower())
 
     for response in responses:
         if response["contract_address"] not in collection_details.CONTRACT_ADDRESS_TO_COLLECTION_SLUG:
@@ -77,9 +81,20 @@ def compute_token_balance_from_json_responses(responses: list[dict]) -> dict:
 
         for nft_data in response['nft_data']:
             metadata = fetch_external_metadata(response["contract_address"], int(nft_data["token_id"]))
+            if metadata[0]['nft_data'][0]['owner_address'] not in portfolio: continue
             nft_name = metadata[0]['nft_data'][0]['external_data']['name']
             avatar_name_raw, avatar_id_str = [s.strip() for s in nft_name.split("#")]
             avatar_name, avatar_id = avatar_name_raw.strip(), int(avatar_id_str)
+            if avatar_name == "Cone Head":
+                print("response ==================")
+                print(response)
+                print()
+                print("nft data ==================")
+                print(nft_data)
+                print()
+                print("metdata ==================")
+                print(metadata)
+                print()
         
             if avatar_name not in avatar_to_ids_owned:
                 avatar_to_ids_owned[avatar_name] = set([])
