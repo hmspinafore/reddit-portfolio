@@ -97,13 +97,14 @@ def compute_token_balance_from_json_responses(addresses, responses) -> dict:
             metadata = fetch_external_metadata(response["contract_address"], int(nft_data["token_id"]))
             if metadata[0]['nft_data'][0]['owner_address'] not in portfolio: continue
 
-            token_owners = fetch_token_owners(response["contract_address"], int(nft_data["token_id"]))
-            found_owner = False
-            for token_owner in token_owners:
-                if token_owner["address"] in portfolio:
-                    found_owner = True
-                    break
-            if not found_owner: continue
+            # Temporarily remove bitski api call as it is currently returning 500
+            #token_owners = fetch_token_owners(response["contract_address"], int(nft_data["token_id"]))
+            #found_owner = False
+            #for token_owner in token_owners:
+            #    if token_owner["address"] in portfolio:
+            #        found_owner = True
+            #        break
+            #if not found_owner: continue
 
             nft_name = metadata[0]['nft_data'][0]['external_data']['name']
             avatar_name_raw, avatar_id_str = [s.strip() for s in nft_name.split("#")]

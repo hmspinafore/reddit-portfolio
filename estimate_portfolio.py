@@ -1,7 +1,7 @@
 import argparse
 import csv
 
-import covalenthq_api_helpers
+import api_helpers
 
 parser = argparse.ArgumentParser()
 
@@ -26,8 +26,8 @@ if __name__ == "__main__":
     print(f"Estimating addresses: {args.addresses}")
     print(f"Reading floorprices from: {args.avatar_floorprices_csv}")
 
-    responses = covalenthq_api_helpers.fetch_token_balance_for_multiple_addresses(args.addresses)
-    token_balances = covalenthq_api_helpers.compute_token_balance_from_json_responses(args.addresses, responses)
+    responses = api_helpers.fetch_token_balance_for_multiple_addresses(args.addresses)
+    token_balances = api_helpers.compute_token_balance_from_json_responses(args.addresses, responses)
     print(f"Token balance found: {token_balances}")
     print()
 
