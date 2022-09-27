@@ -2,6 +2,7 @@ import argparse
 import csv
 
 import api_helpers
+import collection_details
 
 parser = argparse.ArgumentParser()
 
@@ -27,7 +28,7 @@ if __name__ == "__main__":
     print(f"Reading floorprices from: {args.avatar_floorprices_csv}")
 
     responses = api_helpers.fetch_token_balance_for_multiple_addresses(args.addresses)
-    token_balances = api_helpers.compute_token_balance_from_json_responses(args.addresses, responses)
+    token_balances = api_helpers.compute_token_balance_from_json_responses(responses)
     print(f"Token balance found: {token_balances}")
     print()
 
@@ -41,16 +42,29 @@ if __name__ == "__main__":
             name_to_floorprice[name] = float(floorprice)
 
     total = 0.
-    for name in token_balances:
-        if name not in name_to_floorprice:
-            print(f"====================> Error: {name} not found in floorprice data")
-            continue
+    for slug in collection_details.SLUG_TO_TIERS:
+        tier_found = False
+        for tier in collection_details.SLUG_TO_TIERS[slug]:
+            if tier in token_balances:
+                tier_found = True
+                break
+        if not tier_found: continue
 
-        count = len(token_balances[name])
-        floorprice = name_to_floorprice[name]
-        subtotal = count * floorprice
-        total += subtotal
-        print(f"{name}: {count} * {floorprice} = {subtotal}")
+        print(f"[{collection_details.COLLECTION_SLUG_TO_NAME[slug]}]")
+        slug_total = 0.
+        for tier in collection_details.SLUG_TO_TIERS[slug]:
+            if tier in token_balances:
+                if tier not in name_to_floorprice:
+                    print(f"====================> Error: {name} not found in floorprice data")
+                    continue
+
+                count = len(token_balances[tier])
+                floorprice = name_to_floorprice[tier]
+                subtotal = count * floorprice
+                slug_total += subtotal
+                total += subtotal
+                print(f"\t{tier}: {count} * {floorprice} = {subtotal}")
+        print(f"\t[Collection subtotal] = {slug_total}")
 
     print("===================================")
-    print(f"Estimate portfolio value in ETH: {total}")
+    print(f"Estimated portfolio value in ETH: {total}")
