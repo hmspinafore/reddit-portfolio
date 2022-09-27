@@ -1,6 +1,5 @@
 # Running
 
-  * Run avatar floorprice scraper and copy `avatar_floorprices.csv` from directory
   * Run `$ python estimate_portfolio.py [wallet address]` (by default wallet address is r/avatartrading address but it is empty right now
     * Multiple addresses supported! `$ python estimate_portfolio.py [wallet1] [wallet2] ...` 
 
