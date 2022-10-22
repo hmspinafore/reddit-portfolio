@@ -50,7 +50,7 @@ if __name__ == "__main__":
             else:
                 slug = blob[-2]
                 floorprice = blob[-1]
-                name = "".join(blob[:-2])
+                name = ",".join(blob[:-2])
             name_to_floorprice[name] = float(floorprice)
 
     total = 0.
