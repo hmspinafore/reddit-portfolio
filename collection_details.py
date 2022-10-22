@@ -165,7 +165,7 @@ SLUG_TO_TIERS = {
   "spooky-season-rojom-x-reddit-collectible-avatars": ["The Sun", "The Moon", "Cosmic Abyss"],
   "spooky-season-poieeeyee-x-reddit-collectible-avata": ["Night Guard", "Hybrid 693", "Midas Touch"],
   "spooky-season-aliciafreemandesigns-x-reddit-collec": ["Batty for Halloween", "In-tree-guing", "Not so Fungi"],
-  "spooky-season-genuineardvark-x-reddit-collectible": ["Eve, Cataclysm Engine", "Sebastian, the Blood Moon", "Persephone, Aspect of Hades"],
+  "spooky-season-genuineardvark-x-reddit-collectible": ["Eve, Cataclysm Engine [000]", "Sebastian, the Blood Moon", "Persephone, Aspect of Hades"],
   "spooky-season-earthtoplanet-x-reddit-collectible-a": ["ECLIPSE", "HELIX", "AWAKEN"],
   "spooky-season-oana193-x-reddit-collectible-avatars": ["Orpheus the Thirsty", "Naga the Basilisk", "Wildfire Demon"],
   "spooky-season-tfoust10-x-reddit-collectible-avatar": ["Illusionist Foustling", "Ghost Foustling", "Fake Foustling"],
