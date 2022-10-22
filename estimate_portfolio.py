@@ -44,7 +44,13 @@ if __name__ == "__main__":
     name_to_floorprice = {}
     with open(args.avatar_floorprices_csv, "r") as csvfile:
         floorprice_reader = csv.reader(csvfile)
-        for name, slug, floorprice in floorprice_reader:
+        for blob in floorprice_reader:
+            if len(blob) == 3:
+                name, slug, floorprice = blob
+            else:
+                slug = blob[-2]
+                floorprice = blob[-1]
+                name = "".join(blob[:-2])
             name_to_floorprice[name] = float(floorprice)
 
     total = 0.
